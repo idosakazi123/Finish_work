@@ -1,0 +1,47 @@
+<h1>Welcome to Tokyo</h1>
+
+<!--guests users view-->    
+<div id="guest" ng-show="!isLogin">
+    <h2>Welcome guest please  <a href="#/login">login</a>. forget your password? <a href="#/forgetPassword">click here to change it</a></h2> 
+    <h4> doesnt have an account? too bad please make one <a href="#/register">register</a></h4>
+    <h3>explore tokyo</h3>
+    
+    
+    <div ng-repeat="poi in poiArray" style="width: 30%; display: inline-block;">         
+        <br>
+        <button ng-click="onOpenDialog(poi)">
+                {{poi.name}}
+        </button>
+        <br>
+        <img src="{{poi.picture}}" width="400" height="400" ng-click="onOpenDialog(poi)" style="cursor:pointer;">  
+    </div>
+</div>
+
+
+<!--register users view-->
+<div id="account" ng-show="isLogin">
+    
+    <h2>here is your 2 popular poi in your Categories</h2>
+    <div ng-repeat="poi in userPopularPoiArray" style="width: 30%; display: inline-block;">         
+        <br>
+        <button ng-click="onOpenDialog(poi)">
+            {{poi.name}}
+        </button>
+        <br>
+        <img src="{{poi.picture}}" width="400" height="400" ng-click="onOpenDialog(poi)" style="cursor:pointer;"> 
+    </div>
+
+
+    <h2>here is your 2 last poi that you saved</h2>
+    <div ng-repeat="poi in userRecentPoiArray" style="width: 30%; display: inline-block;">         
+        <br> 
+        <button ng-click="onOpenDialog(poi)">
+            {{poi.name}}
+        </button>
+        <br>
+        <img src="{{poi.picture}}" width="400" height="400" ng-click="onOpenDialog(poi)" style="cursor:pointer;">
+    </div>
+    <div ng-if="userRecentPoiArray.length == 0" style="width: 30%; display: inline-block;">         
+        <h3>no saved pictures</h3>
+    </div>
+</div>

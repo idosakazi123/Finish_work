@@ -1,0 +1,11 @@
+<h2>Retrive Password</h2>
+
+<form name="form" role="form">
+    Question: what is your favorite Pet? <br><br>
+    User Name: <input type="text" ng-model="user.username"> <br><br>
+    Answer: <input type="text" ng-model="user.answer"> <br><br>
+
+    <input type="submit" ng-click="showPassword()" value="Submit">
+    <br><br>
+    Password: {{password}}{{error}}<br>
+</form>

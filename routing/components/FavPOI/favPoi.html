@@ -1,0 +1,23 @@
+<h1>Fav Poi Dash</h1>
+<div ng-controller="favPoiCtrl"> 
+    <!--Category: <select ng-model="poiCtrl.poiCategories" ng-options="category for category in poiCategories">choose a categories</select> &emsp;-->
+    Sort by: <input type="checkbox" ng-model="favPoiCtrl.isSortingRequired"> Rate </input> &emsp;     
+</div>
+
+<div ng-repeat="poi in favPoiCtrl.poiArray | orderBy:(favPoiCtrl.isSortingRequired ? '-rate' : 'poid')" style="width: 33.33%; display: inline-block;">         
+    <div>
+            <br>
+            <button ng-click="onOpenDialog(poi)">
+                    {{poi.name}}
+            </button>
+            &emsp; Rate: {{poi.rate}} &emsp;
+             
+            <a ng-click="unsave(poi)" ng-if="poi.save">
+                
+                <img src="http://pluspng.com/img-png/star-png-3d-gold-star-png-file-610.png" width="50" height="50"> 
+            </a>
+            <br>
+
+            <img src="{{poi.picture}}" width="400" height="400" ng-click="onOpenDialog(poi)" style="cursor:pointer;">   
+    </div>
+</div>

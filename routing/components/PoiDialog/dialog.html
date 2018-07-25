@@ -1,0 +1,31 @@
+
+<md-dialog style="max-height:100%;width:40%;">
+    <form ng-cloak class="m-0">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>Point of Interest ID: {{poi.poid}}</h2>
+          <span flex></span>
+          <md-button class="md-icon-button" ng-click="cancel()">
+            <i class="fas fa-times" aria-label="Close dialog"></i>
+          </md-button>
+        </div>
+      </md-toolbar>
+  
+      <md-dialog-content>
+        <div class="md-dialog-content">
+          <h2 class="mb-4">{{poi.name}}</h2>
+          <img style="margin: auto; max-width: 100%;display:inherit;" class="mb-4" ng-src="img/{{card.ImageFileName}}">
+  
+          <p>
+            {{poi.description}}
+          </p>
+  
+        </div>
+      </md-dialog-content>
+  
+  
+      <md-dialog-actions layout="row" style="border-top: 1px solid lightgrey;">
+          {{poi.category}}
+      </md-dialog-actions>
+    </form>
+  </md-dialog>

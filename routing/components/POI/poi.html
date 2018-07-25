@@ -1,0 +1,46 @@
+<h1>Poi Dash</h1>
+<div ng-controller="poiCtrl"> 
+        Search: <input type="text" placeholder="search POI" ng-model="poiCtrl.searchText.name"></input>  &emsp;
+        Category: <select ng-model="poiCtrl.poiCategories" ng-options="category for category in poiCategories">choose a categories</select> &emsp;
+        Sort by: <input type="checkbox" ng-model="poiCtrl.isSortingRequired"> Rate </input> &emsp;
+        
+        <div ng-show="isLogin">
+                <br>
+                <span ng-model="favoriteCounter" >counter: {{favoriteCounter}} &emsp; </span>
+                For Favorite:
+                <a ng-href="#/favPoi">
+                        <img src="https://cdn3.iconfinder.com/data/icons/buttons/512/Icon_18-512.png" width="100" height="100">
+                </a> 
+        </div>          
+</div>
+
+<div ng-repeat="poi in poiCtrl.poiArray | filter:poiCtrl.searchText | filter:poiCtrl.poiCategories | orderBy:(poiCtrl.isSortingRequired ? '-rate' : 'poid')" style="width: 33.33%; display: inline-block;">         
+        <div>
+                <br>
+                <button ng-click="onOpenDialog(poi)">
+                                {{poi.name}}
+                </button>
+                &emsp; Rate: {{poi.rate}} &emsp;
+                 
+                <a ng-show="isLogin" ng-click="unsave(poi)" ng-if="poi.save">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Crystal_Clear_action_bookmark.png" width="50" height="50"> 
+                </a>
+
+                <a ng-show="isLogin" ng-click="save(poi)" ng-if="!poi.save">
+                        <img src="https://images.vexels.com/media/users/3/136916/isolated/preview/aa21eb60437133bf4f4be189636a187a-star-favorite-outline-icon-by-vexels.png" width="50" height="50">   
+                </a>
+
+                <br>
+                <img src="{{poi.picture}}" width="400" height="400" ng-click="onOpenDialog(poi)" style="cursor:pointer;">  
+        </div>
+</div>
+
+<div ng-show  ="(poiCtrl.poiArray | filter:poiCtrl.searchText | filter:poiCtrl.poiCategories | orderBy:(poiCtrl.isSortingRequired ? '-rate' : 'poid')).length == 0 " >
+        <b>nothing here</b>
+</div>
+
+
+
+
+
+

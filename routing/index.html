@@ -1,0 +1,85 @@
+<html ng-app="citiesApp">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="indexController.js"></script>
+    <script src="components/POI/poiCtrl.js"></script>
+    <script src="components/Home/homeCtrl.js"></script>
+    <script src="components/Login/loginCtrl.js"></script>
+    <script src="components/About/aboutCtrl.js"></script>
+    <script src="components/FavPOI/favPoiCtrl.js"></script>
+    <script src="components/Forget/forgetCtrl.js"></script>
+    <script src="components/Register/registerCtrl.js"></script>
+    <script src="components/Services/serviceController.js"></script>
+    <script src="components/Services/localStorageModel.js"></script>
+    <script src="components/PoiDialog/dialogService.js"></script>
+    <title>Cities App</title>
+</head>
+
+<body ng-controller="indexController as indxCtrl">
+    <!-- nav bar for guests -->
+    <div ng-show="!isLogin" >
+        <ul>
+            <li>
+                <a id="homeBar" href="#/">Home</a>
+            </li>
+            <li>
+                <a href="#/about">about</a>
+            </li>
+            <li>
+                <a id="poiBar" href="#/poi">POI</a>
+            </li>
+            <li>
+                <a id="loginBar" href="#/login">Log in</a>
+            </li>
+            <li>
+                <a id="registerBar" href="#/register">Register</a>
+            </li>
+            <span ng-model="userName">hello {{userName}}</span>
+        </ul>
+        <br>
+        <div ng-view> </div>
+    </div>
+
+    <!-- nav bar for users -->
+    <div ng-show="isLogin">
+        <ul>
+            <li>
+                <a id="homeBar" href="#/">Home</a>
+            </li>
+            <li>
+                <a href="#/about">about</a>
+            </li>
+            <li>
+                <a id="poiBar" href="#/poi">POI</a>
+            </li>
+            <li>
+                <a id="poiFavBar" href="#/favPoi">Favroite POI</a>
+            </li>
+            <span ng-model="userName">hello {{userName}}</span>
+            <span ng-click="logout()">logout</span>
+            <!--make it beter when pressing-->
+        </ul>
+        <br>
+        <div ng-view> </div>
+    </div>
+</body>
+
+</html>

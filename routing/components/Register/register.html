@@ -1,0 +1,45 @@
+<h2>Register</h2>
+<form name="myForm" ng-submit="registerCtrl.signUp()" role="form">
+    User name: 
+    <input type="text" ng-model="registerCtrl.user.username" required ng-minlength="3" ng-maxlength="8" name="userName">
+            <span ng-show = "myForm.userName.$error.required">
+                This is a required field
+            </span>
+            <span ng-show =  "myForm.userName.$error.minlength" >
+                Minimum length required is 3
+            </span>
+            <span ng-show = "myForm.userName.$error.maxlength" >
+            Maximum length required is 8
+            </span>
+            <span ng-show="myForm.userName.$invalid">
+                This is invalid 
+            </span>
+    </input><br><br>
+    Password: 
+    <input type="password" ng-model="registerCtrl.user.password" required ng-minlength="5" ng-maxlength="10" name="password" > 
+        <span ng-show = "myForm.password.$error.required">
+            This is a required field
+        </span>
+        <span ng-show =  "myForm.password.$error.minlength" >
+            Minimum length required is 5
+        </span>
+        <span ng-show = "myForm.password.$error.maxlength" >
+        Maximum length required is 10
+        </span>
+        <span ng-show="myForm.password.$invalid">
+            This is invalid 
+        </span>
+    </input><br><br>
+    First name: <input type="text" ng-model="registerCtrl.user.firstname"></input><br><br>
+    Last name: <input type="text" ng-model="registerCtrl.user.lastname"></input><br><br>
+    City: <input type="text" ng-model="registerCtrl.user.city"></input><br><br>
+    Country: <select ng-model="registerCtrl.user.country" ng-options="country for country in registerCtrl.countries" >choose a country</select><br><br>
+    Category: <br><select multiple ng-model="registerCtrl.user.category" ng-options="category for category in registerCtrl.categories">choose a categories</select><br><br>
+    Email: <input type="text" ng-model="registerCtrl.user.email"></input><br><br>
+    What is favorite pet?: <input type="text" ng-model="registerCtrl.user.answer" value="your answer here"></input><br><br>  
+    <input type="submit" value="Register"></input>
+</form>
+
+
+
+    
